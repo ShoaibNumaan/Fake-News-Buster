@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Fake News Detection System</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+
+</head>
+
+<body>
+
+ <div class="login">
+	<h1>FAKE NEWS DETECTOR</h1>
+
+    <form action="{{ url_for('predict')}}" method="POST">
+    	<textarea placeholder="Input News Here:" name="message" rows="6" cols="50" required="required" style="font-size: 18pt"></textarea>
+		<br> </br>
+
+<button type="submit" class="glow-on-hover" type="button">PREDICT NEWS</button>
+        	<div class="results">
+
+	{% if prediction == ['FAKE']%}
+	<h2 style="color:red;">This is Spam News ⚠️</h2>
+	{% elif prediction == ['REAL']%}
+				<h2 style="color:green;"><b>This is a Genuine News </b></h2>
+	{% endif %}
+
+	</div>
+
+    </form>
+
+</div>
